@@ -19,8 +19,8 @@ This tool adds a watermark to PDF files in a given directory using the `poppler-
 1. **Clone this repository**:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/wssgxh/Watermarking.git
+    cd Watermarking
     ```
 
 2. **Install dependencies**:
@@ -32,11 +32,11 @@ This tool adds a watermark to PDF files in a given directory using the `poppler-
     ```
 
 3. **Download and set up `poppler-win`**:
-
-    - Download `poppler-win` from [this link](https://github.com/oschwartz10612/poppler-windows/releases).
-    - Extract the contents to your project directory.
-    - Ensure the `poppler-win/Library/bin` path is set in your environment variables. The script will automatically detect it in the current project folder.
-
+## Prerequisites
+1. **Only Windows with Python 3.12.5 tested**
+2. Python 3.x installed
+3. [poppler-win](https://github.com/oschwartz10612/poppler-windows) installed(check [poppler-win](poppler-win))
+4. Necessary Python packages (listed in `requirements.txt`)
 ## Usage
 
 1. **Place PDF files**: Place all the PDF files you want to watermark in the `resource` folder.
@@ -47,9 +47,9 @@ This tool adds a watermark to PDF files in a given directory using the `poppler-
 
     ```python
     config = {
-        'source_pdf_path': 'resource',  # Directory with source PDFs
-        'output_pdf_path': 'output',    # Directory for output PDFs
-        'watermark_text': 'for verification only'  # Watermark text
+        'source_pdf_path': '',  # default is resource
+        'output_pdf_path': 'output',
+        'watermark_text': 'for verification only'  # Watermark text, please update it
     }
     ```
 
@@ -58,7 +58,7 @@ This tool adds a watermark to PDF files in a given directory using the `poppler-
     Execute the script:
 
     ```bash
-    python your_script_name.py
+    python main.py
     ```
 
 4. **Find the output**:
