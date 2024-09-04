@@ -21,17 +21,18 @@ if __name__ == '__main__':
     # refer to doc: https://pypi.org/project/pdf2image/
 
     config = {
-        'source_pdf_path': 'resource',
-        'output_pdf_path': 'output.pdf',
+        'source_pdf_path': '',
+        'output_pdf_path': 'output',
         'watermark_text': 'for verification only'  # please update me
     }
+
+    if not config['source_pdf_path']:
+        config['source_pdf_path'] = 'resource'
 
     poppler_path = os.path.join(find_poppler_win_path(), 'Library', 'bin')
     os.environ['PATH'] += os.pathsep + poppler_path
 
-    pdf_files_path = get_pdf_files(config['output_pdf_path'])
-
     for info in get_pdf_files(config['source_pdf_path']):
         watermarked_files_name = os.path.basename(info[1])[:-4] + '_watermarked.pdf'
-        cmd = f"""watermark grid  {info[0]}  "{config['watermark_text']}" -s output/{watermarked_files_name} --save-as-image --unselectable"""
+        cmd = f"""watermark grid  {info[0]}  "{config['watermark_text']}" -s "output/{watermarked_files_name}" --save-as-image --unselectable"""
         os.system(cmd)
